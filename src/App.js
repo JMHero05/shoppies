@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SearchForm } from './Components/SearchForm';
 import './App.css';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // Function to handle get request for data from OMDB and set this.state.data to API response
   handleSubmit(searchTerm) {
     fetch(
       `http://www.omdbapi.com/?s=${searchTerm}&page=1-2&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
@@ -21,7 +23,7 @@ class App extends Component {
           const error = (data && data.message) || response.statusText;
           return Promise.reject(error);
         }
-        this.setState({ data: data });
+        this.setState({ data: data.Search });
       })
       .catch((error) => {
         this.setState({ errorMessage: error.toString() });
@@ -30,7 +32,13 @@ class App extends Component {
   }
 
   render() {
-    return <div className='App'></div>;
+    console.log(this.state.data);
+    return (
+      <div className='App'>
+        <h1>The Shoppies</h1>
+        <SearchForm handleSubmit={this.handleSubmit} />
+      </div>
+    );
   }
 }
 
