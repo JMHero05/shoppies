@@ -12,7 +12,7 @@ export function SearchForm(props) {
   return (
     <form onSubmit={submitSearchTerm}>
       <label>
-        Search:
+        Search:{' '}
         <input
           type='text'
           value={searchTerm}
