@@ -1,0 +1,15 @@
+.movie {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  max-height: 250px;
+  margin-right: 10px;
+  border-radius: 4px;
+  transition: transform 450ms;
+}
+
+.poster{
+  max-width: 15vw;
+  height: auto;
+  display: inline;
+}
