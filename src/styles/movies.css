@@ -1,0 +1,7 @@
+#movies{
+	display: flex;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	margin: 0px 20px;
+}
+

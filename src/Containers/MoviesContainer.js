@@ -1,5 +1,6 @@
 import React from 'react';
 import { Movie } from '../Components/Movie';
+import '../styles/movies.css';
 
 export function MoviesContainer(props) {
   const { movies } = props;
