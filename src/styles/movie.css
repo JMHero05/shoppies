@@ -8,6 +8,11 @@
   transition: transform 450ms;
 }
 
+.movie:hover {
+  z-index: 1;
+  transform: scale(1.08);
+}
+
 .poster{
   max-width: 15vw;
   height: auto;
