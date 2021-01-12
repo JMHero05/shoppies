@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SearchForm } from './Components/SearchForm';
 import { MoviesContainer } from './Containers/MoviesContainer';
+import { NominationsContainer } from './Containers/NominationsContainer';
 import './App.css';
 
 class App extends Component {
@@ -37,7 +38,14 @@ class App extends Component {
       <div className='App'>
         <h1>The Shoppies</h1>
         <SearchForm handleSubmit={this.handleSubmit} />
-        <MoviesContainer movies={this.state.data} />
+        <div className='wrapper'>
+          <div className='results'>
+            <MoviesContainer movies={this.state.data} />
+          </div>
+          <div className='nominations'>
+            <NominationsContainer />
+          </div>
+        </div>
       </div>
     );
   }

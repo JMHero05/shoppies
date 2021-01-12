@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.results {
+  width: 75%;
+  height: 100%;
+}
+
+.nominations {
+  width: 25%;
+  height: 100%;
+}
