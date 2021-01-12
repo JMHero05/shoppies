@@ -7,11 +7,15 @@ export function MoviesContainer(props) {
   console.log(movies);
   return (
     <>
-      <h1>Movies Container</h1>
-      <div id='movies'>
-        {movies &&
-          movies.map((movie) => <Movie movie={movie} key={movie.imdbID} />)}
-      </div>
+      {movies ? (
+        <>
+          <h1>Search Results</h1>
+          <div id='movies'>
+            {movies &&
+              movies.map((movie) => <Movie movie={movie} key={movie.imdbID} />)}
+          </div>
+        </>
+      ) : null}
     </>
   );
 }
