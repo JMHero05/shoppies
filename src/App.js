@@ -14,6 +14,7 @@ class App extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.nominateMovie = this.nominateMovie.bind(this);
+    this.removeNomination = this.removeNomination.bind(this);
   }
 
   // Function to handle get request for data from OMDB and set this.state.data to API response
@@ -46,6 +47,17 @@ class App extends Component {
     this.setState({ nominated: nominatedMovies });
   }
 
+  // Function to remove clicked movie from nominated array
+  removeNomination(movieId) {
+    const nominatedMovies = [...this.state.nominated];
+    const removedMovie = this.state.nominated.findIndex(
+      (movie) => movie.imdbID === movieId
+    );
+
+    nominatedMovies.splice(removedMovie, 1);
+    this.setState({ nominated: nominatedMovies });
+  }
+
   render() {
     return (
       <div className='App'>
@@ -60,7 +72,10 @@ class App extends Component {
             />
           </div>
           <div className='nominations'>
-            <NominationsContainer movies={this.state.nominated} />
+            <NominationsContainer
+              movies={this.state.nominated}
+              removeNomination={this.removeNomination}
+            />
           </div>
         </div>
       </div>

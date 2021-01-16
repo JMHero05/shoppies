@@ -2,7 +2,13 @@ import React from 'react';
 import '../styles/nominations.css';
 
 export function Nominated(props) {
-  const { movie } = props;
+  const { movie, removeNomination } = props;
+
+  //Function to remove nominated movie from nomination list
+  function removeNom(e) {
+    let movieId = e.target.parentElement.parentElement.parentElement.id;
+    removeNomination(movieId);
+  }
 
   return (
     <>
@@ -13,7 +19,9 @@ export function Nominated(props) {
             {movie.Title} ({movie.Year})
           </div>
           <div>
-            <button className='nominated'>Remove</button>
+            <button className='nominated' onClick={(e) => removeNom(e)}>
+              Remove
+            </button>
           </div>
         </div>
       </div>
