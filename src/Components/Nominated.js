@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/nominations.css';
 
 export function Nominated(props) {
   const { movie } = props;
