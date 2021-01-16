@@ -58,9 +58,27 @@ class App extends Component {
     this.setState({ nominated: nominatedMovies });
   }
 
+  // Function for banner display when nominations reach 5
+  displayBanner() {
+    if (this.state.nominated.length === 5) {
+      return (
+        <div id='banner'>
+          <h3>You have nominated the maximum allowed movies.</h3>
+          <div>Changed your mind?</div>
+          <div>Don't fret!</div>
+          <div>
+            To nominate another movie, just remove one nomination from your
+            Nominations list.
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div className='App'>
+        {this.displayBanner()}
         <h1>The Shoppies</h1>
         <SearchForm handleSubmit={this.handleSubmit} />
         <div className='wrapper'>
