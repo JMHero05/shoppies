@@ -1,6 +1,7 @@
 .movie {
   display: block;
-  object-fit: contain;
+  /* object-fit: contain; */
+  /* flex-shrink: 0; */
   width: 100%;
   max-height: 300px;
   margin-right: 10px;
@@ -45,4 +46,11 @@
   background-color:#155799;
   border-color: #155799;
   color: #F1F2F2;
+}
+
+.nominate:disabled, .nominate[disabled] {
+  background-color:#ccc;
+  border-color: #999;
+  color: #666;
+  cursor: not-allowed;
 }
