@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 export function SearchForm(props) {
   const [searchTerm, setSearchTerm] = useState('');
-  console.log(searchTerm);
 
   const submitSearchTerm = (e) => {
     e.preventDefault();
