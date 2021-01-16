@@ -10,6 +10,31 @@ export function Movie(props) {
     nominateMovie(movieId);
   }
 
+  // Function to check if movie is nominated and disable buttons
+  function isNominated() {
+    if (nominated.some((nom) => nom.imdbID === movie.imdbID)) {
+      return (
+        <button
+          className='nominate'
+          disabled={true}
+          onClick={(e) => setNominated(e)}>
+          Nominated!
+        </button>
+      );
+    } else if (nominated.length === 5) {
+      return null;
+    } else {
+      return (
+        <button
+          className='nominate'
+          disabled={false}
+          onClick={(e) => setNominated(e)}>
+          Nominate?
+        </button>
+      );
+    }
+  }
+
   return (
     <>
       <div className='movie' id={movie.imdbID}>
@@ -17,14 +42,7 @@ export function Movie(props) {
         <div className='title'>
           {movie.Title} ({movie.Year})
         </div>
-        <div>
-          <button
-            className='nominate'
-            disabled={false}
-            onClick={(e) => setNominated(e)}>
-            Nominate?
-          </button>
-        </div>
+        <div>{isNominated()}</div>
       </div>
     </>
   );
