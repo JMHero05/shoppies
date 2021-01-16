@@ -1,0 +1,58 @@
+.nom-movie {
+  display: flex;
+  justify-content: space-around;
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  margin-bottom: 10px;
+  border: 2px solid #aaccff;
+  padding: .5rem;
+}
+
+.nom-poster{
+  max-height: 100px;
+  flex-shrink: 0;
+  margin: 0;
+  display: inline;
+  border-radius: 4px;
+  transition: transform 450ms;
+  /* border: 2px solid rgba(170, 204, 255, 0.1); */
+  box-shadow: 1px 2.9px 16px rgba(241, 242, 242,0.15);
+}
+
+.title-button {
+  align-self: center;
+}
+
+.title {
+  margin-top: 5px;
+}
+
+.nominated {
+  width: 150px;
+  margin-top: 5px;
+  border: 2px solid #aaccff;
+  padding: 6px 18px;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #155799;
+  background-color: #F1F2F2;
+  transition: 0.25s ease-in-out;
+	border-radius: 5rem;
+	cursor:pointer;
+	font-weight: bold;
+}
+
+.nominated:hover {
+  background-color:#155799;
+  border-color: #155799;
+  color: #F1F2F2;
+}
+
+.nominated:disabled, .nominated[disabled] {
+  background-color:#ccc;
+  border-color: #999;
+  color: #666;
+  cursor: not-allowed;
+}
