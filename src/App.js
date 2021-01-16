@@ -20,7 +20,7 @@ class App extends Component {
   // Function to handle get request for data from OMDB and set this.state.data to API response
   handleSubmit(searchTerm) {
     fetch(
-      `http://www.omdbapi.com/?s=${searchTerm}&page=1-2&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
+      `https://www.omdbapi.com/?s=${searchTerm}&page=1-2&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
     )
       .then(async (response) => {
         const data = await response.json();
