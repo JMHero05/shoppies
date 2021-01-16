@@ -59,7 +59,9 @@ class App extends Component {
               nominateMovie={this.nominateMovie}
             />
           </div>
-          <div className='nominations'></div>
+          <div className='nominations'>
+            <NominationsContainer movies={this.state.nominated} />
+          </div>
         </div>
       </div>
     );
