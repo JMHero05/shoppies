@@ -9,9 +9,11 @@ class App extends Component {
     super(props);
     this.state = {
       data: null,
+      nominated: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.nominateMovie = this.nominateMovie.bind(this);
   }
 
   // Function to handle get request for data from OMDB and set this.state.data to API response
@@ -33,6 +35,17 @@ class App extends Component {
       });
   }
 
+  // Function to add clicked movie to nominated array
+  nominateMovie(movieId) {
+    const nominatedMovies = [...this.state.nominated];
+    const nominatedMovie = this.state.data.find(
+      (movie) => movie.imdbID === movieId
+    );
+
+    nominatedMovies.push(nominatedMovie);
+    this.setState({ nominated: nominatedMovies });
+  }
+
   render() {
     return (
       <div className='App'>
@@ -40,11 +53,13 @@ class App extends Component {
         <SearchForm handleSubmit={this.handleSubmit} />
         <div className='wrapper'>
           <div className='results'>
-            <MoviesContainer movies={this.state.data} />
+            <MoviesContainer
+              movies={this.state.data}
+              nominated={this.state.nominated}
+              nominateMovie={this.nominateMovie}
+            />
           </div>
-          <div className='nominations'>
-            <NominationsContainer />
-          </div>
+          <div className='nominations'></div>
         </div>
       </div>
     );
