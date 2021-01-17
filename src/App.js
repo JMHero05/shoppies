@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { SearchForm } from './Components/SearchForm';
 import { MoviesContainer } from './Containers/MoviesContainer';
 import { NominationsContainer } from './Containers/NominationsContainer';
-import './App.css';
+import './styles/App.css';
 
 class App extends Component {
   constructor(props) {
@@ -63,11 +63,9 @@ class App extends Component {
     if (this.state.nominated.length === 5) {
       return (
         <div id='banner'>
-          <h3>You have nominated the maximum allowed movies.</h3>
-          <div>Changed your mind?</div>
-          <div>Don't fret!</div>
+          <div>You have nominated 5 movies, which is the maximum allowed.</div>
           <div>
-            To nominate another movie, just remove one nomination from your
+            To nominate another movie, remove one nomination from your
             Nominations list.
           </div>
         </div>
@@ -75,13 +73,11 @@ class App extends Component {
     }
   }
 
-  render() {
-    return (
-      <div className='App'>
-        {this.displayBanner()}
-        <h1>The Shoppies</h1>
-        <SearchForm handleSubmit={this.handleSubmit} />
-        <div className='wrapper'>
+  // Function for flexible of Movies and Nominations styling
+  displaySearchResults() {
+    if (this.state.nominated.length > 0) {
+      return (
+        <>
           <div className='results'>
             <MoviesContainer
               movies={this.state.data}
@@ -95,7 +91,28 @@ class App extends Component {
               removeNomination={this.removeNomination}
             />
           </div>
+        </>
+      );
+    } else {
+      return (
+        <div className='results-nominations'>
+          <MoviesContainer
+            movies={this.state.data}
+            nominated={this.state.nominated}
+            nominateMovie={this.nominateMovie}
+          />
         </div>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        {this.displayBanner()}
+        <h1>The Shoppies</h1>
+        <SearchForm handleSubmit={this.handleSubmit} />
+        <div className='wrapper'>{this.displaySearchResults()}</div>
       </div>
     );
   }
