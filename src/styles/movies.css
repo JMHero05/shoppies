@@ -9,3 +9,9 @@
 #movies::-webkit-scrollbar {
 	display: none;
 }
+
+@media (max-width: 768px) {
+	#movies{
+		padding: 1rem 0 3rem 0;
+	}
+}
