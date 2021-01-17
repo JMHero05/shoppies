@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   object-fit: contain;
-  width: 100%;
+  max-width: 100%;
   max-height: 100px;
   margin-bottom: 10px;
   border: 2px solid #aaccff;
