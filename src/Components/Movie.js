@@ -3,11 +3,23 @@ import '../styles/movie.css';
 
 export function Movie(props) {
   const { movie, nominated, nominateMovie } = props;
+  const shopifyLogo =
+    'https://assets.website-files.com/5cfadf19b0ec9084a96f7520/5d6911e18cc2810c3cae3274_shopify-logo-600x600.jpg';
 
   // Function to add movie to nominated array
   function setNominated(e) {
     let movieId = e.target.parentElement.parentElement.id;
     nominateMovie(movieId);
+  }
+
+  //Function to manage poster display
+  function displayPoster() {
+    console.log(movie.Poster);
+    if (movie.Poster === 'N/A') {
+      return <img className='poster' src={shopifyLogo} alt={movie.Title} />;
+    } else {
+      return <img className='poster' src={movie.Poster} alt={movie.Title} />;
+    }
   }
 
   // Function to check if movie is nominated and disable buttons
@@ -38,7 +50,7 @@ export function Movie(props) {
   return (
     <>
       <div className='movie' id={movie.imdbID}>
-        <img className='poster' src={movie.Poster} alt={movie.Title} />
+        {displayPoster()}
         <div className='title'>
           {movie.Title} ({movie.Year})
         </div>
