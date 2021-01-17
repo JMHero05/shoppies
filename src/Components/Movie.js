@@ -14,7 +14,6 @@ export function Movie(props) {
 
   //Function to manage poster display
   function displayPoster() {
-    console.log(movie.Poster);
     if (movie.Poster === 'N/A') {
       return <img className='poster' src={shopifyLogo} alt={movie.Title} />;
     } else {

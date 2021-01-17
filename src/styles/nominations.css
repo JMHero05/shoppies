@@ -2,10 +2,11 @@
   display: flex;
   justify-content: space-around;
   object-fit: contain;
-  max-width: 100%;
-  max-height: 100px;
-  margin-bottom: 10px;
-  border: 2px solid #aaccff;
+  max-width: 90%;
+  max-height: 100%;
+  margin: 0 10px 10px 10px;
+  border: 2px solid #9BD4C1;
+  border-radius: 1rem;
   padding: .5rem;
 }
 
@@ -16,7 +17,7 @@
   display: inline;
   border-radius: 4px;
   transition: transform 450ms;
-  /* border: 2px solid rgba(170, 204, 255, 0.1); */
+  border: 2px solid rgba(170, 204, 255, 0.1);
   box-shadow: 1px 2.9px 16px rgba(241, 242, 242,0.15);
 }
 
