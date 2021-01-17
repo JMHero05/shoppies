@@ -9,7 +9,6 @@ export function MoviesContainer(props) {
     <>
       {movies ? (
         <>
-          <h1>Search Results</h1>
           <div id='movies'>
             {movies &&
               movies.map((movie) => (
