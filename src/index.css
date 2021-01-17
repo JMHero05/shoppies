@@ -7,5 +7,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #222233;
   text-rendering: optimizeLegibility;
-  color: rgba(255, 255, 255, 0.8);
+  color: #d6d6d6cc;
 }
