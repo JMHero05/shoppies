@@ -28,7 +28,7 @@ export function Nominated(props) {
       <div className='nom-movie' id={movie.imdbID}>
         {displayPoster()}
         <div className='title-button'>
-          <div className='title'>
+          <div>
             {movie.Title} ({movie.Year})
           </div>
           <div>
