@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { SearchForm } from './Components/SearchForm';
 import { MoviesContainer } from './Containers/MoviesContainer';
 import { NominationsContainer } from './Containers/NominationsContainer';
 import './styles/App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      nominated: [],
-    };
+function App() {
+  const [data, setData] = useState(null);
+  const [nominated, setNominated] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.nominateMovie = this.nominateMovie.bind(this);
-    this.removeNomination = this.removeNomination.bind(this);
-  }
-
-  // Function to handle get request for data from OMDB and set this.state.data to API response
-  handleSubmit(searchTerm) {
+  // Function to handle get request for data from OMDB and set data to API response
+  const handleSubmit = (searchTerm) => {
     fetch(
       `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
     )
@@ -28,39 +21,37 @@ class App extends Component {
           const error = (data && data.message) || response.statusText;
           return Promise.reject(error);
         }
-        this.setState({ data: data.Search });
+        setData(data.Search);
       })
       .catch((error) => {
-        this.setState({ errorMessage: error.toString() });
-        console.error('There was an error!', error);
+        setErrorMessage(error);
+        console.error('There was an error!', errorMessage);
       });
-  }
+  };
 
   // Function to add clicked movie to nominated array
-  nominateMovie(movieId) {
-    const nominatedMovies = [...this.state.nominated];
-    const nominatedMovie = this.state.data.find(
-      (movie) => movie.imdbID === movieId
-    );
+  const nominateMovie = (movieId) => {
+    const nominatedMovies = [...nominated];
+    const nominatedMovie = data.find((movie) => movie.imdbID === movieId);
 
     nominatedMovies.push(nominatedMovie);
-    this.setState({ nominated: nominatedMovies });
-  }
+    setNominated(nominatedMovies);
+  };
 
   // Function to remove clicked movie from nominated array
-  removeNomination(movieId) {
-    const nominatedMovies = [...this.state.nominated];
-    const removedMovie = this.state.nominated.findIndex(
+  const removeNomination = (movieId) => {
+    const nominatedMovies = [...nominated];
+    const removedMovie = nominated.findIndex(
       (movie) => movie.imdbID === movieId
     );
 
     nominatedMovies.splice(removedMovie, 1);
-    this.setState({ nominated: nominatedMovies });
-  }
+    setNominated(nominatedMovies);
+  };
 
   // Function for banner display when nominations reach 5
-  displayBanner() {
-    if (this.state.nominated.length === 5) {
+  const displayBanner = () => {
+    if (nominated.length === 5) {
       return (
         <div id='banner'>
           <div>You have nominated 5 movies, which is the maximum allowed.</div>
@@ -71,24 +62,24 @@ class App extends Component {
         </div>
       );
     }
-  }
+  };
 
   // Function for flexible of Movies and Nominations styling
-  displaySearchResults() {
-    if (this.state.nominated.length > 0) {
+  const displaySearchResults = () => {
+    if (nominated.length > 0) {
       return (
         <>
           <div className='results'>
             <MoviesContainer
-              movies={this.state.data}
-              nominated={this.state.nominated}
-              nominateMovie={this.nominateMovie}
+              movies={data}
+              nominated={nominated}
+              nominateMovie={nominateMovie}
             />
           </div>
           <div className='nominations'>
             <NominationsContainer
-              movies={this.state.nominated}
-              removeNomination={this.removeNomination}
+              movies={nominated}
+              removeNomination={removeNomination}
             />
           </div>
         </>
@@ -97,25 +88,23 @@ class App extends Component {
       return (
         <div className='results-nominations'>
           <MoviesContainer
-            movies={this.state.data}
-            nominated={this.state.nominated}
-            nominateMovie={this.nominateMovie}
+            movies={data}
+            nominated={nominated}
+            nominateMovie={nominateMovie}
           />
         </div>
       );
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className='App'>
-        {this.displayBanner()}
-        <h1>The Shoppies</h1>
-        <SearchForm handleSubmit={this.handleSubmit} />
-        <div className='wrapper'>{this.displaySearchResults()}</div>
-      </div>
-    );
-  }
+  return (
+    <div className='App'>
+      {displayBanner()}
+      <h1>The Shoppies</h1>
+      <SearchForm handleSubmit={handleSubmit} />
+      <div className='wrapper'>{displaySearchResults()}</div>
+    </div>
+  );
 }
 
 export default App;
