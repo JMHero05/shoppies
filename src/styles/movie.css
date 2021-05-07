@@ -34,6 +34,7 @@
   text-transform: uppercase;
   color: #155799;
   background-color: #F1F2F2;
+  box-shadow: 0 3px 3px #9BD4C1;
   transition: 0.25s ease-in-out;
 	border-radius: 5rem;
 	cursor:pointer;
@@ -41,14 +42,36 @@
 }
 
 .nominate:hover {
+  animation: gradient 125ms;
   background-color:#155799;
   border-color: #155799;
   color: #F1F2F2;
 }
 
 .nominate:disabled, .nominate[disabled] {
+  animation: none;
   background-color:#ccc;
   border-color: #999;
   color: #666;
+  box-shadow: none;
   cursor: not-allowed;
+}
+
+@keyframes gradient {
+  0% {
+    background: radial-gradient(circle at center, rgba( 21, 87, 153, 0 ) 0%, #fff 0%, #fff 100%);
+  }
+  25% {
+    background: radial-gradient(circle at center, rgba( 21, 87, 153, 0.3 ) 24%, #fff 25%, #fff 100%);
+  }
+  50% {
+    background: radial-gradient(circle at center, rgba( 21, 87, 153, 0.5 ) 49%, #fff 50%, #fff 100%);
+  }
+  75% {
+    background: radial-gradient(circle at center, rgba( 21, 87, 153, 0.8 ) 74%, #fff 75%, #fff 100%);
+  }
+  100% {
+    color: #fff;
+    background: radial-gradient(circle at center, #155799 99%, #fff 100%, #fff 100%);
+  }
 }

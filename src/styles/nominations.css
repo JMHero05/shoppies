@@ -36,6 +36,7 @@
   text-transform: uppercase;
   color: #155799;
   background-color: #F1F2F2;
+  box-shadow: 0 3px 3px #9BD4C1;
   transition: 0.25s ease-in-out;
 	border-radius: 5rem;
 	cursor:pointer;
@@ -43,19 +44,30 @@
 }
 
 .nominated:hover {
-  background-color:#155799;
-  border-color: #155799;
+  animation: removeGradient 125ms;
+  background-color:#e40909;
+  border-color: #e40909;
   color: #F1F2F2;
 }
 
-.nominated:disabled, .nominated[disabled] {
-  background-color:#ccc;
-  border-color: #999;
-  color: #666;
-  cursor: not-allowed;
+@keyframes removeGradient {
+  0% {
+    background: radial-gradient(circle at center, rgba(228, 9, 9, 0) 0%, #fff 0%, #fff 100%);
+  }
+  25% {
+    background: radial-gradient(circle at center, rgba( 228, 9, 9, 0.3 ) 24%, #fff 25%, #fff 100%);
+  }
+  50% {
+    background: radial-gradient(circle at center, rgba( 228, 9, 9, 0.5 ) 49%, #fff 50%, #fff 100%);
+  }
+  75% {
+    background: radial-gradient(circle at center, rgba(228, 9, 9, 0.8) 74%, #fff 75%, #fff 100%);
+  }
+  100% {
+    color: #fff;
+    background: radial-gradient(circle at center, #e40909 99%, #fff 100%, #fff 100%);
+  }
 }
-
-
 
 @media (max-width: 1300px) {
   .nom-poster{
