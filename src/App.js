@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { SearchForm } from './Components/SearchForm';
 import { MoviesContainer } from './Containers/MoviesContainer';
@@ -8,24 +8,18 @@ import './styles/App.css';
 function App() {
   const [data, setData] = useState(null);
   const [nominated, setNominated] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
 
   // Function to handle get request for data from OMDB and set data to API response
   const handleSubmit = (searchTerm) => {
-    fetch(
-      `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
-    )
-      .then(async (response) => {
-        const data = await response.json();
-        if (!response.ok) {
-          const error = (data && data.message) || response.statusText;
-          return Promise.reject(error);
-        }
-        setData(data.Search);
+    axios
+      .get(
+        `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
+      )
+      .then((response) => {
+        setData(response.data.Search);
       })
       .catch((error) => {
-        setErrorMessage(error);
-        console.error('There was an error!', errorMessage);
+        console.error(`There was an error! ${error}`);
       });
   };
 
