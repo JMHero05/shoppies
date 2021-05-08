@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 import { SearchForm } from './Components/SearchForm';
 import { MoviesContainer } from './Containers/MoviesContainer';
 import { NominationsContainer } from './Containers/NominationsContainer';
@@ -7,7 +8,9 @@ import './styles/App.css';
 
 function App() {
   const [data, setData] = useState(null);
-  const [nominated, setNominated] = useState([]);
+  const [cookies, setCookie] = useCookies(['nominations']);
+  const [nominated, setNominated] = useState([...cookies.nominations]);
+  console.log(cookies);
 
   // Function to handle get request for data from OMDB and set data to API response
   const handleSubmit = (searchTerm) => {
@@ -23,6 +26,11 @@ function App() {
       });
   };
 
+  // Function to add movie to cookies
+  function addCookieNom(nominated) {
+    setCookie('nominations', nominated);
+  }
+
   // Function to add clicked movie to nominated array
   const nominateMovie = (movieId) => {
     const nominatedMovies = [...nominated];
@@ -30,6 +38,7 @@ function App() {
 
     nominatedMovies.push(nominatedMovie);
     setNominated(nominatedMovies);
+    addCookieNom(nominatedMovies);
   };
 
   // Function to remove clicked movie from nominated array
@@ -41,6 +50,7 @@ function App() {
 
     nominatedMovies.splice(removedMovie, 1);
     setNominated(nominatedMovies);
+    setCookie('nominations', nominatedMovies);
   };
 
   // Function for banner display when nominations reach 5
