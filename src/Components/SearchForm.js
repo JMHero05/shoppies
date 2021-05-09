@@ -16,7 +16,7 @@ export function SearchForm(props) {
       <input
         type='text'
         value={searchTerm}
-        placeholder='Enter a Movie Title'
+        placeholder='Search for a Movie Title'
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button type='submit' value='Submit'>

@@ -3,10 +3,12 @@ input[type=text] {
   border-right: none;
   padding: 5px;
   height: 20px;
+  width: 15%;
   border-radius: 5px 0 0 5px;
   outline: none;
 	color: #155799;
 	font-weight: 700;
+  text-align: center;
 }
 
 input[type='text']:focus{

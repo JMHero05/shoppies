@@ -62,11 +62,11 @@ function App() {
     if (nominated.length === 5) {
       return (
         <div id='banner'>
-          <div>You have nominated 5 movies, which is the maximum allowed.</div>
-          <div>
+          <h2>You have nominated 5 movies, which is the maximum allowed.</h2>
+          <h3>
             To nominate another movie, remove one nomination from your
             Nominations list.
-          </div>
+          </h3>
         </div>
       );
     }
