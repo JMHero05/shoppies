@@ -6,11 +6,15 @@ import { MoviesContainer } from './Containers/MoviesContainer';
 import { NominationsContainer } from './Containers/NominationsContainer';
 import './styles/App.css';
 
+// Function to check for cookies
+function areThereCookies(cookies) {
+  return cookies.nominations ? [...cookies.nominations] : [];
+}
+
 function App() {
   const [data, setData] = useState(null);
   const [cookies, setCookie] = useCookies(['nominations']);
-  const [nominated, setNominated] = useState([...cookies.nominations]);
-  console.log(cookies);
+  const [nominated, setNominated] = useState(areThereCookies(cookies));
 
   // Function to handle get request for data from OMDB and set data to API response
   const handleSubmit = (searchTerm) => {
@@ -80,6 +84,7 @@ function App() {
               nominateMovie={nominateMovie}
             />
           </div>
+          <h2>Nominations</h2>
           <div className='nominations'>
             <NominationsContainer
               movies={nominated}
