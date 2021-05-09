@@ -1,6 +1,6 @@
-#### *My submission for Shopify's UX Developer Intern &amp; Web Developer Intern Challenge - Summer 2021*
+#### *My submission for Shopify's UX Developer Intern &amp; Web Developer Intern Challenge - Fall 2021*
 
-# UX Developer Intern & Web Developer Intern Challenge - Summer 2021
+# UX Developer Intern & Web Developer Intern Challenge - Fall 2021
 
 ## The Shoppies: Movie awards for entrepreneurs
 
