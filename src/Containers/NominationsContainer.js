@@ -5,8 +5,7 @@ export function NominationsContainer(props) {
   const { movies, removeNomination } = props;
 
   return (
-    <div>
-      <h3>Nominations</h3>
+    <>
       {movies.length > 0
         ? movies.map((movie) => (
             <Nominated
@@ -16,6 +15,6 @@ export function NominationsContainer(props) {
             />
           ))
         : null}
-    </div>
+    </>
   );
 }

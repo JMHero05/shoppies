@@ -4,12 +4,14 @@
 
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   border-top: 2px solid rgba(170, 204, 255, 0.1);
   margin-top: 10px;
 }
 
 h1 {
+  font-size: 300%;
   margin-top: 5px;
 }
 
@@ -20,14 +22,12 @@ h1 {
 }
 
 .results {
-  width: 75%;
+  width: 100%;
   height: 100%;
-  border-right: 2px solid rgba(170, 204, 255, 0.1);
 }
 
 .nominations {
-  width: 25%;
-  height: 100%;
+  display: flex;
 }
 
 #banner {
@@ -42,7 +42,7 @@ h1 {
   font-weight: 700;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 950px) {
   .wrapper {
     flex-direction: column;
   }
@@ -51,7 +51,12 @@ h1 {
     height: 100%;
   }
   .nominations {
+    flex-direction: column;
     width: 100%;
     height: 100%;
+  }
+  .nom-movie {
+    display: flex;
+    justify-content: space-evenly;
   }
 }
